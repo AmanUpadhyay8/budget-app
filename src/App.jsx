@@ -3,21 +3,43 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+// Library
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+// Layouts
+import Main, { mainLoader } from "./layouts/Main";
+
+//Actions
+import { logoutAction } from "./actions/logout";
+
+
 // Routes Pages
 import Dashboard, { dashboardLoader } from "./Pages/Dashboard";
 import Error from "./Pages/Error";
 
 
+
+
 const router = createBrowserRouter([
   {
     path : "/",
-    element : <Dashboard />,
-    loader : dashboardLoader,
+    element : <Main />,
+    loader : mainLoader,
     errorElement : <Error />,
-  },
-  {
-    path : "/about",
-    element : <h1>Hello There</h1>
+    children : [
+      {
+        index : true,
+        element : <Dashboard />,
+        loader : dashboardLoader,
+        errorElement : <Error />,
+      },
+      {
+        path: "logout",
+        action: logoutAction,
+      }
+    ]
   },
 ]);
 
@@ -26,6 +48,7 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router} />
+      <ToastContainer />
     </div>
   );
 }
