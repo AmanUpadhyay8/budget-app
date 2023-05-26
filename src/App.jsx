@@ -16,7 +16,7 @@ import { logoutAction } from "./actions/logout";
 
 
 // Routes Pages
-import Dashboard, { dashboardLoader } from "./Pages/Dashboard";
+import Dashboard, { dashboardAction, dashboardLoader } from "./Pages/Dashboard";
 import Error from "./Pages/Error";
 
 
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
         index : true,
         element : <Dashboard />,
         loader : dashboardLoader,
+        action : dashboardAction,
         errorElement : <Error />,
       },
       {
