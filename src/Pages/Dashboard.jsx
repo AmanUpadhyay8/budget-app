@@ -7,6 +7,7 @@ import { createBudget, fetchData, waait } from "../helpers"
 //components
 import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
+import AddExpenseForm from "../components/AddExpenseForm";
 
 // library
 import { toast } from "react-toastify";
@@ -66,6 +67,7 @@ const Dashboard = () => {
                 <div className="grid-lg">
                   <div className="flex-lg">
                     <AddBudgetForm /> 
+                    <AddExpenseForm budgets={budgets} />
                   </div>
                 </div>
               ) :  (
