@@ -12,7 +12,7 @@ const AddExpenseForm = ( {budgets} ) => {
         if(!isSubmitting){
             //clear form
             formRef.current.reset();
-            // reset focus
+             // reset focus
             focusRef.current.focus();
         }
     }, [isSubmitting])
@@ -58,7 +58,7 @@ const AddExpenseForm = ( {budgets} ) => {
                         budgets.sort((a,b)=> a.createdAt - b.createdAt )
                         .map((budget)=> {
                             return(
-                                <option key={budget.id} value="{budget.id}">{budget.name}</option>
+                                <option key={budget.id} value={budget.id}>{budget.name}</option>
                             )
                         })
                     }
