@@ -80,3 +80,6 @@ export const formatCurrency = (amt) => {
     currency : "INR"
   })
 }
+
+// Format date
+export const formatDateToLocaleString = (epoch) => new  Date(epoch).toLocaleDateString();
