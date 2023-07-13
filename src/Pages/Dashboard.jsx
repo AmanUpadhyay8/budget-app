@@ -1,5 +1,5 @@
 // react router dom imports
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, Link, useLoaderData } from "react-router-dom";
 
 // helper functions
 import { createBudget, createExpense, fetchData, waait } from "../helpers"
@@ -15,6 +15,7 @@ import Table from "../components/table";
 
 // library
 import { toast } from "react-toastify";
+import { ArrowDownCircleIcon, ArrowDownOnSquareStackIcon, ArrowDownRightIcon, ArrowDownTrayIcon, ArrowRightCircleIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
 
 
@@ -101,7 +102,10 @@ const Dashboard = () => {
                     expenses && expenses.length > 0 && (
                       <div className="grid-md">
                         <h2>Recent Expenses</h2>
-                        <Table expenses={expenses.sort((a,b) => b.createdAt - a.createdAt)}/>
+                        <Table expenses={expenses.sort((a,b) => b.createdAt - a.createdAt).slice(0,5)}/>
+                        { expenses.length > 5 && (
+                          <Link to="expenses" className="btn btn--accent">View all Expenses <ArrowRightCircleIcon width={25}/> </Link>
+                        )}
                       </div>
                     )
                   } 

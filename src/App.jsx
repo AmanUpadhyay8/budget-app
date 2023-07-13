@@ -18,6 +18,7 @@ import { logoutAction } from "./actions/logout";
 // Routes Pages
 import Dashboard, { dashboardAction, dashboardLoader } from "./Pages/Dashboard";
 import Error from "./Pages/Error";
+import ExpensesPage, { expensesLoader } from "./Pages/ExpensesPage";
 
 
 
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
         loader : dashboardLoader,
         action : dashboardAction,
         errorElement : <Error />,
+      },
+      {
+        path : "expenses",
+        element : <ExpensesPage />,
+        loader : expensesLoader,
       },
       {
         path: "logout",

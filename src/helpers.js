@@ -1,4 +1,4 @@
-export const waait= () => new Promise(res => setTimeout(res, Math.random() * 2000)) 
+export const waait= () => new Promise(res => setTimeout(res, Math.random() * 500)) 
  
  // local storage function 
  export const fetchData = (key) => {
@@ -59,6 +59,13 @@ export const createExpense = ({name,amount, budgetId}) => {
   }, 0)
   return budgetSpent;
  }
+
+
+// Get all items from the local storage
+export const getAllMatchingItems = ({category, key, value}) => {
+  const data = fetchData(category) ?? [];
+  return data.filter((item)=> item[key] === value);
+}
 
 
  // Formatting
