@@ -2,7 +2,7 @@
 import { Form, Link, useLoaderData } from "react-router-dom";
 
 // helper functions
-import { createBudget, createExpense, fetchData, waait } from "../helpers"
+import { createBudget, createExpense, deleteItem, fetchData, waait } from "../helpers"
 
 //components
 import Intro from "../components/Intro";
@@ -15,7 +15,7 @@ import Table from "../components/table";
 
 // library
 import { toast } from "react-toastify";
-import { ArrowDownCircleIcon, ArrowDownOnSquareStackIcon, ArrowDownRightIcon, ArrowDownTrayIcon, ArrowRightCircleIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
+import { ArrowRightCircleIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 
 
 
@@ -58,7 +58,6 @@ export async function dashboardAction({request}) {
   }
   if(_action === "createExpense"){
     try{
-      // create an expense
       createExpense({
         name : values.newExpense,
         amount : values.newExpenseAmount,
@@ -67,6 +66,17 @@ export async function dashboardAction({request}) {
       return toast.success(`Expense ${values.newExpense} created!`)
     } catch(e){
       throw new Error("There was a problem creating your expense.")
+    }
+  }
+  if(_action === "deleteExpense"){
+    try{
+      deleteItem({
+        key : "expenses",
+        id : values.expenseId
+      });
+      return toast.success("Expense deleted!")
+    } catch(e){
+      throw new Error("There was a problem deleting your expense.")
     }
   }
 }
