@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import { deleteItem, fetchData } from "../helpers";
-import Table from "../components/table";
+import Table from "../components/Tables";
 import { toast } from "react-toastify";
 
 
