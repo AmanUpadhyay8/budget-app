@@ -3,10 +3,10 @@
 import { Form, Link } from "react-router-dom";
 
 
-import { calculateSpentByBudget, formatCurrency, formatPercentage } from "../helpers";
+import { calculateSpentByBudget, deleteItem, formatCurrency, formatPercentage } from "../helpers";
 
 // Library imports
-import { BanknotesIcon } from "@heroicons/react/24/outline";
+import { BanknotesIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 
 const BudgetItem = ({budget, showDelete = false}) => {
@@ -27,21 +27,32 @@ const BudgetItem = ({budget, showDelete = false}) => {
         <div className="progress-text">
             <small>{formatCurrency(spent)} spent</small>
             <small>{formatCurrency(amount-spent)} remaining</small>
-            {
+        </div>
+        {
                 showDelete ? (
-                    <Form>
-                        <p>Hello there!</p>
-                    </Form>
+                    <div className="flex-sm">
+                        <Form method="post" action="delete" onSubmit={(event)=> {
+                            if(!confirm("Are you sure you want to delete this budget?")){
+                                event.preventDefault();
+                            }
+                        }}>
+                        <button type="submit" className="btn" style={{
+                            "--accent" : budget.color,
+                        }}>
+                            <span>Delete {budget.name}</span>
+                            <TrashIcon width={20} />
+                        </button>
+                        </Form>
+                    </div>
                 ) : (
                     <div className="flex-sm">
                         <Link to={`/budget/${id}`} className="btn">
                             <span>View Details</span>
                             <BanknotesIcon width={20} />
                         </Link>
-        </div>
+                    </div>
                 )
             }
-        </div>
     </div>
   )
 }
