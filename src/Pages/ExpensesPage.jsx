@@ -20,7 +20,7 @@ export async function expensesAction({request}){
         try{
           deleteItem({
             key : "expenses",
-            id : values.expenseId
+            id : values.expenseId,
           });
           return toast.success("Expense deleted!")
         } catch(e){
