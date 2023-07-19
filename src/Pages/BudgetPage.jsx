@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import { createExpense, deleteItem, getAllMatchingItems } from "../helpers"
 import BudgetItem from "../components/BudgetItem";
 import AddExpenseForm from "../components/AddExpenseForm";
-import Table from "../components/table";
+import Table from "../components/Tables";
 import { toast } from "react-toastify";
 
 // loader

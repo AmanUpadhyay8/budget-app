@@ -9,7 +9,7 @@ import Intro from "../components/Intro";
 import AddBudgetForm from "../components/AddBudgetForm";
 import AddExpenseForm from "../components/AddExpenseForm";
 import BudgetItem from "../components/BudgetItem";
-import Table from "../components/table";
+import Table from "../components/Tables";
  
 
 
